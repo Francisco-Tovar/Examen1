@@ -44,7 +44,20 @@
   <ItemGroup>
     <Compile Include="DAO\SqlDao.cs" />
     <Compile Include="DAO\SqlOperation.cs" />
+    <Compile Include="Mapper\DiccionarioMapper.cs" />
+    <Compile Include="Mapper\EntityMapper.cs" />
+    <Compile Include="Mapper\IObjectMapper.cs" />
+    <Compile Include="Mapper\ISqlStatement.cs" />
+    <Compile Include="Mapper\PalabraMapper.cs" />
+    <Compile Include="Mapper\TraduccionMapper.cs" />
+    <Compile Include="Mapper\UsuarioMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities_POJO\Entities_POJO.csproj">
+      <Project>{89065f02-8925-4dc5-bf57-e2f023a7c037}</Project>
+      <Name>Entities_POJO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

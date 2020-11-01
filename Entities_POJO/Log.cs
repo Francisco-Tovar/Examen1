@@ -2,7 +2,7 @@
 
 namespace Entities_POJO
 {
-    class Log : BaseEntity
+    public class Log : BaseEntity
     {
         public int logId { get; set; }
         public int usuarioId { get; set; }

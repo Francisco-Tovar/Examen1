@@ -2,7 +2,7 @@
 
 namespace Entities_POJO
 {
-    class Palabra : BaseEntity
+    public class Palabra : BaseEntity
     {
         public int palabraId { get; set; }
         public int diccionarioId { get; set; }
