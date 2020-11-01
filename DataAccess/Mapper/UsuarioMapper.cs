@@ -14,6 +14,7 @@ namespace DataAcess.Mapper
             var operation = new SqlOperation { ProcedureName = "CRE_USUARIO_PR" };
 
             var c = (Usuario)entity;
+            operation.AddVarcharParam(DB_COL_USUARIOID, c.usuarioId);
             operation.AddVarcharParam(DB_COL_NOMBRE, c.nombre);
             return operation;
         }
@@ -23,7 +24,7 @@ namespace DataAcess.Mapper
             var operation = new SqlOperation { ProcedureName = "RET_USUARIO_PR" };
 
             var c = (Usuario)entity;
-            operation.AddVarcharParam(DB_COL_USUARIOID, c.usuarioId);
+            operation.AddVarcharParam(DB_COL_USUARIOID, c.usuarioId.ToLower());
 
             return operation;
         }

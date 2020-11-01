@@ -5,7 +5,7 @@ namespace Entities_POJO
     public class Log : BaseEntity
     {
         public int logId { get; set; }
-        public int usuarioId { get; set; }
+        public string usuarioId { get; set; }
         public int diccionarioId { get; set; }
         public DateTime fecha { get; set; }
         public string frase { get; set; }
@@ -23,13 +23,9 @@ namespace Entities_POJO
                     logId = x;
                 else
                     throw new Exception("El id del log debe ser un número.");
-                                
-                x = 0;
-                if (Int32.TryParse(infoArray[1], out x))
-                    usuarioId = x;
-                else
-                    throw new Exception("El id del usuario debe ser un número.");
 
+                usuarioId = infoArray[1];
+                
                 x = 0;
                 if (Int32.TryParse(infoArray[2], out x))
                     diccionarioId = x;
