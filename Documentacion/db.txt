@@ -131,6 +131,82 @@ AS
 	SELECT * FROM TBL_LOGS;
 
 
+--------------------------------------------------------------------------------------------
+--CONSULTA A
+CREATE PROCEDURE [dbo].[CONSULTA_A_PR]
+AS
+	SELECT NOMBRE FROM TBL_DICCIONARIOS;
+
+--CONSULTA B
+CREATE PROCEDURE [dbo].[CONSULTA_B_PR]
+AS
+select top 1 * from (
+select b.nombre as idioma, count(a.diccionarioid) as traducciones
+from [dbo].[TBL_TRADUCCIONES] as a
+JOIN [dbo].[TBL_DICCIONARIOS] as b
+on a.diccionarioid=b.diccionarioid
+group by a.diccionarioid, b.nombre) AS F;
+
+--CONSULTA C
+CREATE PROCEDURE [dbo].[CONSULTA_C_PR]
+AS
+select top 100 * from (
+select b.palabra as palabra, c.nombre as idioma, count(a.palabraid) as traducciones
+from [dbo].[TBL_TRADUCCIONES] as a
+JOIN [dbo].[TBL_PALABRAS] as b on a.palabraid=b.palabraid
+JOIN [dbo].[TBL_DICCIONARIOS] as c on b.diccionarioid = c.diccionarioid
+group by a.palabraid, b.palabra, c.nombre) AS F 
+order by traducciones desc;
+
+--CONSULTA F
+CREATE PROCEDURE [dbo].[CONSULTA_F_PR]
+	@P_IDIOMA NVARCHAR(255)
+AS
+select a.nombre as idioma, b.palabra as palabra, b.significado as traduccion
+from [dbo].[TBL_DICCIONARIOS] as a 
+join [dbo].[TBL_PALABRAS] as b on a.diccionarioid=b.diccionarioid
+where a.nombre=@P_IDIOMA;
+
+--CONSULTA H
+CREATE PROCEDURE [dbo].[CONSULTA_H_PR]
+AS
+select top 1 * from (
+    select b.nombre as usuario, count(b.nombre) as traducciones
+    from [dbo].[TBL_TRADUCCIONES] as a
+    JOIN [dbo].[TBL_USUARIOS] as b on a.usuarioid=b.usuarioid    
+    group by a.usuarioid, b.nombre) AS F 
+order by traducciones desc;
+-------------------------------------------------------------------------------------
+--CONSULTA D
+CREATE PROCEDURE [dbo].[CONSULTA_D_PR]
+	@P_DIA NVARCHAR(255)
+AS
+select top 10 * from (
+select fecha fecha, count(a.palabraid) popularidad, b.palabra palabra, c.nombre idioma from [dbo].[TBL_TRADUCCIONES] as a
+join [dbo].[TBL_PALABRAS] as b on a.palabraid=b.palabraid
+join [dbo].[TBL_DICCIONARIOS] as c on a.diccionarioid=c.diccionarioid
+where format(fecha,'dddd') = @P_DIA
+group by a.palabraid, a.fecha, b.palabra, c.nombre) as F
+order by popularidad desc;
+
+--CONSULTA E
+CREATE PROCEDURE [dbo].[CONSULTA_E_PR]
+AS
+select palabra palabra, nombre nombre from [dbo].[TBL_PALABRAS] as a
+join [dbo].[TBL_DICCIONARIOS] as b on a.diccionarioid=b.diccionarioid
+order by palabra;
+
+--CONSULTA G
+CREATE PROCEDURE [dbo].[CONSULTA_G_PR]
+	@P_PALABRA NVARCHAR(255)
+AS
+select a.palabraid id, fecha fecha ,d.nombre usuario, b.palabra palabra, b.significado significado,c.nombre idioma
+from [dbo].[TBL_TRADUCCIONES] as a
+join [dbo].[TBL_PALABRAS] as b on a.palabraid=b.palabraid
+join [dbo].[TBL_DICCIONARIOS] as c on a.diccionarioid=c.diccionarioid
+join [dbo].[TBL_USUARIOS] as d on a.usuarioid = d.usuarioid
+where b.palabra=@P_PALABRA;
+
 
 
 

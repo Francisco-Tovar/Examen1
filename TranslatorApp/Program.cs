@@ -101,7 +101,19 @@ namespace TranslatorApp
                         }
                     case 100:
                         {
-                            Console.WriteLine(" - Gracias por usar Translator Bot.");
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("         ___");
+                            Console.WriteLine("       _(   )_");
+                            Console.WriteLine("      |_ > < _| [>");
+                            Console.WriteLine("      __|===|__//");
+                            Console.WriteLine("     //| o=o |  ");
+                            Console.WriteLine("    <] | o=o |  ");
+                            Console.WriteLine("       |=====| ");
+                            Console.WriteLine("      ( | | | ) ");
+                            Console.WriteLine("     (_|_|_|_|_) ");
+                            Console.WriteLine(" - Gracias por usar - "); 
+                            Console.WriteLine(" -  Translator Bot  - ");
                             Console.ReadKey();
                             break;
                         }
@@ -180,13 +192,13 @@ namespace TranslatorApp
             if (temp == null)
             {
                 Console.Clear();
-                Console.WriteLine("La palabra " + palabra + " no existe en el diccionario " + tDic.nombre);
+                Console.WriteLine("La palabra '" + palabra + "' no existe en el diccionario " + tDic.nombre);
                 Console.WriteLine("Conoce el significado para agregarla? (s/n)");
                 var opcion = "";
                 opcion = Console.ReadLine().ToLower();
                 if (opcion.Equals("s"))
                 {
-                    Console.WriteLine("Cual es el significado de " + palabra + " en " + tDic.nombre + " ?: ");
+                    Console.WriteLine("Cual es el significado de '" + palabra + "' en " + tDic.nombre + " ?: ");
                     temp = new Palabra();
                     temp.significado = Console.ReadLine();
                     temp.diccionarioId = tDic.diccionarioId;
@@ -194,7 +206,7 @@ namespace TranslatorApp
                     palaMng.Create(temp);
                     frase = temp.significado;
                     
-                    Console.WriteLine("El significado de " + palabra + " en " + tDic.nombre + " es "+temp.significado);
+                    Console.WriteLine("El significado de '" + palabra + "' en " + tDic.nombre + " es '"+temp.significado+"'");
                     Console.ReadKey();
                 }
                 else
@@ -223,7 +235,8 @@ namespace TranslatorApp
                 if (!respuesta.Equals("s")) 
                 {
                     token = true;
-                    Console.WriteLine("Muchas gracias por utilizar Translator Bot!");
+                    Console.WriteLine();
+                    Console.WriteLine("  -  Muchas gracias por utilizar Translator Bot!  -  ");
                     Console.ReadKey();
                 }
             } 
@@ -233,6 +246,7 @@ namespace TranslatorApp
         public static void registrarTraduccion(Palabra palabra, Usuario user, Diccionario dicc)
         {
             Traduccion tTraduc = new Traduccion();
+            palabra = palaMng.RetrieveByDic(palabra);
             tTraduc.palabraId = palabra.palabraId;
             tTraduc.diccionarioId = dicc.diccionarioId;
             tTraduc.usuarioId = user.usuarioId;            
@@ -282,18 +296,31 @@ namespace TranslatorApp
         {
             List <Log> lista = new List<Log>();
             lista = logMng.RetrieveAll();
+            List<Diccionario> dics = new List<Diccionario>();
+            dics = dicMng.RetrieveAll();
+
+
             Console.Clear();
             string linea = string.Format("{0,-15}{1,-8}{2,-15}{3,-30}{4,-30}{5,-5} \n",
                 "Usuario" , "Idioma" , "Fecha" , "Frase", "Traduccion", "Popularidad");
             Console.WriteLine(linea);
             foreach (Log item in lista)
             {
+                string idioma = "";
                 Usuario user = new Usuario();
                 user.usuarioId = item.usuarioId;
                 user = userMng.RetrieveById(user);
+                foreach (Diccionario dic in dics)
+                {
+                    if (dic.diccionarioId == item.diccionarioId) 
+                    {
+                        idioma = dic.nombre;
+                    }
+                }
+                               
 
                 linea = string.Format("{0,-15}{1,-8}{2,-15}{3,-30}{4,-30}{5,-5} \n", 
-                    user.nombre , item.diccionarioId , item.fecha.ToString("MM/dd/yyyy"), item.frase , 
+                    user.nombre , idioma , item.fecha.ToString("MM/dd/yyyy"), item.frase , 
                                   item.traduccion , item.popularidad);
                 Console.WriteLine(linea);
             }

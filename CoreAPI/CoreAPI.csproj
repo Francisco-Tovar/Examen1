@@ -42,6 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseManager.cs" />
+    <Compile Include="ConsultaAManager.cs" />
+    <Compile Include="ConsultaBManager.cs" />
+    <Compile Include="ConsultaCManager.cs" />
+    <Compile Include="ConsultaDManager.cs" />
+    <Compile Include="ConsultaEManager.cs" />
+    <Compile Include="ConsultaFManager.cs" />
+    <Compile Include="ConsultaGManager.cs" />
+    <Compile Include="ConsultaHManager.cs" />
     <Compile Include="DiccionarioManager.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="PalabraManager.cs" />

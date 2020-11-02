@@ -41,7 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationMessage.cs" />
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="ConsultaA.cs" />
+    <Compile Include="ConsultaB.cs" />
+    <Compile Include="ConsultaC.cs" />
+    <Compile Include="ConsultaD.cs" />
+    <Compile Include="ConsultaE.cs" />
+    <Compile Include="ConsultaF.cs" />
+    <Compile Include="ConsultaG.cs" />
+    <Compile Include="ConsultaH.cs" />
     <Compile Include="Diccionario.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="ObjectDumper.cs" />

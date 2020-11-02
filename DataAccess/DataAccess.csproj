@@ -42,6 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Crud\ConsultaACrudFactory.cs" />
+    <Compile Include="Crud\ConsultaBCrudFactory.cs" />
+    <Compile Include="Crud\ConsultaCCrudFactory.cs" />
+    <Compile Include="Crud\ConsultaDCrudFactory.cs" />
+    <Compile Include="Crud\ConsultaECrudFactory.cs" />
+    <Compile Include="Crud\ConsultaFCrudFactory.cs" />
+    <Compile Include="Crud\ConsultaGCrudFactory.cs" />
+    <Compile Include="Crud\ConsultaHCrudFactory.cs" />
     <Compile Include="Crud\CrudFactory.cs" />
     <Compile Include="Crud\DiccionarioCrudFactory.cs" />
     <Compile Include="Crud\LogCrudFactory.cs" />
@@ -50,6 +58,14 @@
     <Compile Include="Crud\UsuarioCrudFactory.cs" />
     <Compile Include="DAO\SqlDao.cs" />
     <Compile Include="DAO\SqlOperation.cs" />
+    <Compile Include="Mapper\ConsultaAMapper.cs" />
+    <Compile Include="Mapper\ConsultaBMapper.cs" />
+    <Compile Include="Mapper\ConsultaCMapper.cs" />
+    <Compile Include="Mapper\ConsultaDMapper.cs" />
+    <Compile Include="Mapper\ConsultaEMapper.cs" />
+    <Compile Include="Mapper\ConsultaFMapper.cs" />
+    <Compile Include="Mapper\ConsultaGMapper.cs" />
+    <Compile Include="Mapper\ConsultaHMapper.cs" />
     <Compile Include="Mapper\DiccionarioMapper.cs" />
     <Compile Include="Mapper\EntityMapper.cs" />
     <Compile Include="Mapper\IObjectMapper.cs" />
