@@ -17,7 +17,7 @@ namespace DataAcess.Mapper
 
             var c = (Traduccion)entity;
             operation.AddIntParam(DB_COL_PALABRAID, c.palabraId);
-            operation.AddIntParam(DB_COL_USUARIOID, c.usuarioId);
+            operation.AddVarcharParam(DB_COL_USUARIOID, c.usuarioId);
             operation.AddIntParam(DB_COL_DICCIONARIOID, c.diccionarioId);
             operation.AddDatetimeParam(DB_COL_FECHA, c.fecha);            
             return operation;
@@ -52,7 +52,7 @@ namespace DataAcess.Mapper
             {
                 traduccionId = GetIntValue(row, DB_COL_TRADUCCIONID),
                 palabraId = GetIntValue(row, DB_COL_PALABRAID),
-                usuarioId = GetIntValue(row, DB_COL_USUARIOID),
+                usuarioId = GetStringValue(row, DB_COL_USUARIOID),
                 diccionarioId = GetIntValue(row, DB_COL_DICCIONARIOID),
                 fecha = GetDateValue(row, DB_COL_FECHA)
             };

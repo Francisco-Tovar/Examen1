@@ -6,7 +6,7 @@ namespace Entities_POJO
     {
         public int traduccionId { get; set; }
         public int palabraId { get; set; }
-        public int usuarioId { get; set; }
+        public string usuarioId { get; set; }
         public int diccionarioId { get; set; }
         public DateTime fecha { get; set; }
      
@@ -27,12 +27,9 @@ namespace Entities_POJO
                     palabraId = x;
                 else
                     throw new Exception("El id de la palabra debe ser un número.");
-                x = 0;
-                if (Int32.TryParse(infoArray[2], out x))
-                    usuarioId = x;
-                else
-                    throw new Exception("El id del usuario debe ser un número.");
 
+                usuarioId = infoArray[2];
+                
                 x = 0;
                 if (Int32.TryParse(infoArray[3], out x))
                     diccionarioId = x;

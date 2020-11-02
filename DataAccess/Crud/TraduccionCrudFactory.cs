@@ -25,9 +25,9 @@ namespace DataAcess.Crud
 
         public override List<T> RetrieveAllID<T>(BaseEntity entity)
         {
+            var sqlOperation = mapper.GetRetriveAllIDStatement(entity);
             var lstCustomers = new List<T>();
-
-            var lstResult = dao.ExecuteQueryProcedure(mapper.GetRetriveAllStatement());
+            var lstResult = dao.ExecuteQueryProcedure(sqlOperation);
             var dic = new Dictionary<string, object>();
             if (lstResult.Count > 0)
             {
